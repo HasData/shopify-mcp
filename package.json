@@ -1,0 +1,41 @@
+{
+  "name": "@hasdata/shopify-mcp",
+  "mcpName": "com.hasdata/shopify",
+  "version": "1.0.0",
+  "description": "MCP server for Shopify storefronts through HasData's hosted API: pull the public product catalogue and collections from any store by URL, with variants, SKUs and prices. No app, no merchant token. 1,000 free credits every month.",
+  "type": "module",
+  "bin": {
+    "hasdata-shopify-mcp": "index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "mcp-remote": "^0.1.43"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HasData/shopify-mcp.git"
+  },
+  "homepage": "https://hasdata.com/apis/shopify-api",
+  "keywords": [
+    "mcp",
+    "shopify",
+    "shopify-mcp",
+    "ecommerce",
+    "product-data",
+    "price-monitoring",
+    "model-context-protocol",
+    "hasdata",
+    "scraper"
+  ]
+}
