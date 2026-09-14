@@ -167,10 +167,10 @@ A prompt that names a category rather than a handle takes two calls, one to list
 
 ## Tools
 
-| Tool | Credits | What it returns |
-| :--- | :--- | :--- |
-| `hasdata_shopify_collections_getCollections` | 5 | Each collection's id, title, handle, body_html description, image, and timestamps |
-| `hasdata_shopify_products_getProducts` | 5 | Product id, title, handle, vendor, product_type, tags, body_html, images, variants with prices/SKUs/inventory status, and timestamps |
+| Tool | What it returns |
+| --- | --- |
+| `hasdata_shopify_collections_getCollections` | Each collection's id, title, handle, body_html description, image, and timestamps. 5 credits a call |
+| `hasdata_shopify_products_getProducts` | Product id, title, handle, vendor, product_type, tags, body_html, images, variants with prices/SKUs/inventory status, and timestamps. 5 credits a call |
 
 Two tools, 5 credits per successful call. Both take a storefront URL and page through the results with `limit` and `page`, where `limit` accepts up to 250.
 
