@@ -3,7 +3,7 @@
   "mcpServers": {
     "shopify": {
       "type": "streamable-http",
-      "url": "https://mcp.hasdata.com/api/mcp?apis=shopify",
+      "url": "https://mcp.hasdata.com/mcp?apis=shopify",
       "headers": {
         "x-api-key": "YOUR_HASDATA_API_KEY"
       }
