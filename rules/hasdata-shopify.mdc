@@ -1,0 +1,36 @@
+---
+description: How to pull products and collections from a Shopify storefront through the HasData MCP server
+alwaysApply: false
+---
+
+# Shopify through HasData
+
+Two tools, both keyed on a storefront `url`. `hasdata_shopify_products_getProducts` returns products, optionally narrowed to a `collection`, and `hasdata_shopify_collections_getCollections` returns the collections themselves. Both page with `limit` and `page`.
+
+The `url` is a store's domain, so the tools work against any Shopify storefront rather than against one account. Nothing here is authenticated, so what comes back is what the store publishes.
+
+## The field names are Shopify's, not ours
+
+These payloads are snake_case, unlike the rest of HasData's, because they mirror Shopify's own product shape. A product carries `id`, `title`, `handle`, `body_html`, `vendor`, `product_type`, `tags`, `options`, `images`, `variants`, `created_at`, `published_at` and `updated_at`. Code that reaches for `productType` or `bodyHtml` finds nothing.
+
+`body_html` is HTML, not text. Strip the markup before putting a description in front of a reader.
+
+## Price lives on the variant, and it is a string
+
+A product has no price of its own. Each entry in `variants` carries `price`, `compare_at_price`, `sku`, its option values and an `available` flag.
+
+Both prices are strings, such as `"16.50"`. Parse them to numbers before sorting, comparing or averaging, because a string sort puts `"9.00"` above `"16.00"` and the answer looks plausible. `compare_at_price` can be null, so test it before calling anything a markdown.
+
+`available` is per variant, so a product is not sold out until every variant says so. The figure to quote is a range across variants or the price of a named one, and a product with a single variant is the only case with a single price.
+
+A collection carries `id`, `title`, `handle`, `description`, `products_count`, `published_at` and `updated_at`. A `products_count` of zero is ordinary for a staged or seasonal collection rather than a sign the call failed.
+
+## A wrong storefront still answers 200
+
+A URL that is not a classic Shopify storefront returns a successful call with an `error` string where `products` should be, and `requestMetadata.status` still reads `ok`. Test for the `products` array rather than the status. A headless store often fails on its custom domain and works on its `<shop>.myshopify.com` address, so that is the retry worth making.
+
+## Paging
+
+`page` starts at 1 and `limit` caps the page at 250. `collection` takes the collection handle rather than its title or id.
+
+There is no `pagination` block in the products response, unlike the other tools here, so the only stop signal is a page that comes back short or empty. Set `limit` to 250 and read `products_count` from the collection first, because a page costs the same whatever its size and a catalogue walked twenty at a time is twelve times the calls.
