@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hasdata-shopify-mcp",
+  "version": "1.0.0",
+  "description": "Shopify MCP server for Cursor. The public product catalogue and collections of any Shopify storefront, with variants, SKUs and prices, as structured JSON. Remote MCP server hosted by HasData, connects over streamable HTTP with your HasData API key.",
+  "author": {
+    "name": "HasData",
+    "url": "https://hasdata.com"
+  },
+  "homepage": "https://hasdata.com/apis/shopify-api",
+  "repository": "https://github.com/HasData/shopify-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "shopify",
+    "shopify-mcp",
+    "ecommerce",
+    "product-data",
+    "price-monitoring",
+    "model-context-protocol",
+    "hasdata",
+    "scraper"
+  ],
+  "logo": "https://hasdata.com/favicon.svg"
+}
