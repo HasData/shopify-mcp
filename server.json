@@ -3,7 +3,7 @@
   "name": "com.hasdata/shopify",
   "title": "HasData Shopify",
   "description": "The public product catalogue and collections of any Shopify storefront, as structured JSON.",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "websiteUrl": "https://hasdata.com/apis/shopify-api",
   "repository": {
     "url": "https://github.com/HasData/shopify-mcp",
@@ -27,7 +27,7 @@
     {
       "registryType": "npm",
       "identifier": "@hasdata/shopify-mcp",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "transport": {
         "type": "stdio"
       },
@@ -43,7 +43,7 @@
     {
       "registryType": "pypi",
       "identifier": "hasdata-shopify-mcp",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
