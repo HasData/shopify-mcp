@@ -6,7 +6,7 @@ A hosted Model Context Protocol (MCP) server that gives Claude, Cursor, Windsurf
 
 It reads the catalogue a signed-out visitor can see, on any classic Shopify storefront, whether it sits on a `myshopify.com` address or a custom domain. A headless store answers on its `myshopify.com` domain.
 
-**1,000 free credits every month, no card required**, which is 200 Shopify calls at the 5-credit rate.
+**1,000 free credits every month, no card required**, which is 100 Shopify calls at the 5-credit rate.
 
 ```
 https://mcp.hasdata.com/mcp?apis=shopify
@@ -169,10 +169,10 @@ A prompt that names a category rather than a handle takes two calls, one to list
 
 | Tool | What it returns |
 | --- | --- |
-| `hasdata_shopify_collections_getCollections` | Each collection's id, title, handle, body_html description, image, and timestamps. 5 credits a call |
-| `hasdata_shopify_products_getProducts` | Product id, title, handle, vendor, product_type, tags, body_html, images, variants with prices/SKUs/inventory status, and timestamps. 5 credits a call |
+| `hasdata_shopify_collections_getCollections` | Each collection's id, title, handle, body_html description, image, and timestamps. 10 credits a call |
+| `hasdata_shopify_products_getProducts` | Product id, title, handle, vendor, product_type, tags, body_html, images, variants with prices/SKUs/inventory status, and timestamps. 10 credits a call |
 
-Two tools, 5 credits per successful call. Both take a storefront URL and page through the results with `limit` and `page`, where `limit` accepts up to 250.
+Two tools, 10 credits per successful call. Both take a storefront URL and page through the results with `limit` and `page`, where `limit` accepts up to 250.
 
 ### Get Shopify store products
 
@@ -283,11 +283,11 @@ Results that carry data also carry a `requestMetadata.id` worth quoting in suppo
 
 ## Pricing, free tier and limits
 
-Each Shopify tool costs **5 credits per successful call**. Response size does not change the price, so a 250-product page and a 3-product page cost the same, which makes the largest page the cheapest way to mirror a catalogue.
+Each Shopify tool costs **10 credits per successful call**. Response size does not change the price, so a 250-product page and a 3-product page cost the same, which makes the largest page the cheapest way to mirror a catalogue.
 
-The free tier is **1,000 credits every month with no card**, which is 200 Shopify calls at the base rate. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
+The free tier is **1,000 credits every month with no card**, which is 100 Shopify calls at the base rate. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
 
-Paid plans start at **$59 a month** for 200,000 credits, which is 40,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=shopify-mcp).
+Paid plans start at **$59 a month** for 200,000 credits, which is 20,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=shopify-mcp).
 
 Your plan also sets concurrency. The free tier allows 1 request at a time, Startup 5, Basic 15, and the Growth tiers run from 50 to 500. Retry on the 429 with a backoff in anything unattended, because an agent that fans out across stores will reach the ceiling before you do.
 
@@ -313,7 +313,7 @@ Shopify's Admin API is the official route to a store's catalogue, and it answers
 | Inventory levels | Exact counts | An `available` flag per variant |
 | Draft and hidden products | Returned | Not returned, they are not public |
 | Orders and customers | Returned | Not returned |
-| Cost | Free within rate limits | Paid past the free tier, 5 credits a call |
+| Cost | Free within rate limits | Paid past the free tier, 10 credits a call |
 
 The row that decides it is which stores. The Admin API is built for a merchant working on their own shop, and it needs a token that only that merchant can issue, which rules it out for comparing yourself against ten competitors. When the store is yours, the Admin API is more complete and free, and you should use it.
 
@@ -378,7 +378,7 @@ npm install
 HASDATA_API_KEY=your_key_here npm test
 ```
 
-The tests in `test/` assert the tool contract, the part that can break without a commit here. They check that `?apis=shopify` returns the expected tool count, that no name changed, that every tool still declares its required parameter and carries a description, and that the key in use is actually accepted. That last check calls a tool for real and costs 5 credits, which is the price of a canary that can fail for the right reason.
+The tests in `test/` assert the tool contract, the part that can break without a commit here. They check that `?apis=shopify` returns the expected tool count, that no name changed, that every tool still declares its required parameter and carries a description, and that the key in use is actually accepted. That last check calls a tool for real and costs 10 credits, which is the price of a canary that can fail for the right reason.
 
 The contract suite also runs weekly on a schedule, because the upstream tool list can change without anyone touching this repository.
 
