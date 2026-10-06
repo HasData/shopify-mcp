@@ -349,7 +349,7 @@ Page with `limit` at 250 and step `page` until a page comes back short or empty.
 
 ### Can I use this together with other HasData APIs?
 
-Yes. One key covers everything, and one endpoint serves them all through the `apis` parameter. Point a client at `?apis=shopify,amazon` to get both tool sets in one connection, or at [`mcp.hasdata.com/api/mcp`](https://docs.hasdata.com/mcp-server?utm_source=github&utm_medium=syndication&utm_campaign=shopify-mcp) for the full catalogue.
+Yes. One key covers everything, and one endpoint serves them all through the `apis` parameter. Point a client at `?apis=shopify,amazon` to get both tool sets in one connection, or at [`mcp.hasdata.com/mcp`](https://docs.hasdata.com/mcp-server?utm_source=github&utm_medium=syndication&utm_campaign=shopify-mcp) for the full catalogue.
 
 ### Is HasData affiliated with Shopify?
 
