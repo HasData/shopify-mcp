@@ -6,7 +6,7 @@ A hosted Model Context Protocol (MCP) server that gives Claude, Cursor, Windsurf
 
 It reads the catalogue a signed-out visitor can see, on any classic Shopify storefront, whether it sits on a `myshopify.com` address or a custom domain. A headless store answers on its `myshopify.com` domain.
 
-**1,000 free credits every month, no card required**, which is 100 Shopify calls at the 5-credit rate.
+**1,000 free credits every month, no card required**, which is 100 Shopify calls at the 10-credit rate.
 
 ```
 https://mcp.hasdata.com/mcp?apis=shopify
@@ -38,7 +38,7 @@ https://mcp.hasdata.com/mcp?apis=shopify
 
 ## What you need
 
-An MCP client and a HasData API key from the [dashboard](https://app.hasdata.com/sign-up?utm_source=github&utm_medium=syndication&utm_campaign=shopify-mcp), free to create with no card, and the free tier covers about 200 calls a month at the 5-credit rate. This is a remote server, so the simplest path is a URL and an `x-api-key` header, with no container to run. A client that only speaks stdio reaches it through a thin launcher, published as `@hasdata/shopify-mcp` on npm and `hasdata-shopify-mcp` on PyPI, shown below.
+An MCP client and a HasData API key from the [dashboard](https://app.hasdata.com/sign-up?utm_source=github&utm_medium=syndication&utm_campaign=shopify-mcp), free to create with no card, and the free tier covers about 100 calls a month at the 10-credit rate. This is a remote server, so the simplest path is a URL and an `x-api-key` header, with no container to run. A client that only speaks stdio reaches it through a thin launcher, published as `@hasdata/shopify-mcp` on npm and `hasdata-shopify-mcp` on PyPI, shown below.
 
 ## Quick start
 
